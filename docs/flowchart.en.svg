@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1050" viewBox="0 0 1400 1050">
+  <defs>
+    <style>
+      .title{font:700 40px Arial,sans-serif;fill:#172033}.sub{font:400 21px Arial,sans-serif;fill:#4b5563}.h{font:700 26px Arial,sans-serif;fill:#172033}.t{font:400 20px Arial,sans-serif;fill:#253046}.small{font:400 17px Arial,sans-serif;fill:#4b5563}.note{font:600 18px Arial,sans-serif;fill:#253046}.arrow{stroke:#56627a;stroke-width:4;fill:none;marker-end:url(#a)}
+    </style>
+    <marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#56627a"/></marker>
+  </defs>
+  <rect width="1400" height="1050" rx="28" fill="#f8fafc"/>
+  <text x="700" y="64" text-anchor="middle" class="title">Codex Low-Token Two-Stage Development Workflow</text>
+  <text x="700" y="100" text-anchor="middle" class="sub">Use the strong web model for reasoning-heavy development; reserve local Codex for real execution and verification.</text>
+  <rect x="85" y="150" width="1230" height="145" rx="22" fill="#e9f2ff" stroke="#8ab4f8" stroke-width="2"/>
+  <text x="120" y="195" class="h">1. Input to the Web Stage</text>
+  <text x="120" y="233" class="t">Project ZIP + Web Skill + requirement</text>
+  <text x="120" y="267" class="small">Only give the web model its own Skill. Do not upload the Local Codex Skill here.</text>
+  <path class="arrow" d="M700 295 L700 345"/>
+  <rect x="85" y="350" width="1230" height="250" rx="22" fill="#eefbf3" stroke="#79c99e" stroke-width="2"/>
+  <text x="120" y="397" class="h">2. Web Reasoning Stage — do the expensive thinking once</text>
+  <text x="120" y="438" class="t">• Understand architecture and requirements</text>
+  <text x="120" y="472" class="t">• Create plan.md for non-trivial work</text>
+  <text x="120" y="506" class="t">• Implement the primary code changes</text>
+  <text x="120" y="540" class="t">• Perform static code review</text>
+  <text x="790" y="438" class="t">• Produce minimal patch ZIP</text>
+  <text x="790" y="472" class="t">• List required deletions</text>
+  <text x="790" y="506" class="t">• Write a complete Local Codex handoff</text>
+  <text x="790" y="540" class="t">• Mark what still requires runtime verification</text>
+  <text x="120" y="580" class="note">Avoid by default: full compile/test loops, local SDK setup, unrelated refactors.</text>
+  <path class="arrow" d="M700 600 L700 650"/>
+  <rect x="85" y="655" width="1230" height="125" rx="22" fill="#fff7e8" stroke="#e5b75b" stroke-width="2"/>
+  <text x="120" y="700" class="h">3. Handoff Boundary</text>
+  <text x="120" y="739" class="t">Apply the minimal patch locally → pass Local Skill + Web handoff prompt to Codex.</text>
+  <text x="120" y="768" class="small">Deletion commands live in the handoff because an overlay ZIP cannot reliably express file deletion.</text>
+  <path class="arrow" d="M700 780 L700 830"/>
+  <rect x="85" y="835" width="1230" height="165" rx="22" fill="#f3efff" stroke="#a995e8" stroke-width="2"/>
+  <text x="120" y="880" class="h">4. Local Codex Stage — execute, verify, repair narrowly</text>
+  <text x="120" y="920" class="t">Delete specified files → build/compile → relevant tests → smoke/runtime checks → small fixes → re-verify → cleanup</text>
+  <text x="120" y="955" class="note">Do not redo requirement analysis or architecture design. Escalate architecture-level failures back to the Web stage.</text>
+  <text x="700" y="1030" text-anchor="middle" class="small">Token-saving idea: prevent duplicate reasoning and duplicate primary implementation on Local Codex.</text>
+</svg>
