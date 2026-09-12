@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1050" viewBox="0 0 1400 1050">
+  <defs>
+    <style>
+      .title{font:700 40px Arial,"Noto Sans TC",sans-serif;fill:#172033}.sub{font:400 21px Arial,"Noto Sans TC",sans-serif;fill:#4b5563}.h{font:700 26px Arial,"Noto Sans TC",sans-serif;fill:#172033}.t{font:400 20px Arial,"Noto Sans TC",sans-serif;fill:#253046}.small{font:400 17px Arial,"Noto Sans TC",sans-serif;fill:#4b5563}.note{font:600 18px Arial,"Noto Sans TC",sans-serif;fill:#253046}.arrow{stroke:#56627a;stroke-width:4;fill:none;marker-end:url(#a)}
+    </style>
+    <marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#56627a"/></marker>
+  </defs>
+  <rect width="1400" height="1050" rx="28" fill="#f8fafc"/>
+  <text x="700" y="64" text-anchor="middle" class="title">Codex 低 Token 雙階段開發工作流</text>
+  <text x="700" y="100" text-anchor="middle" class="sub">高推理 Web 模型負責主要分析與改碼；地端 Codex 專注真實環境中的編譯、測試與收尾。</text>
+  <rect x="85" y="150" width="1230" height="145" rx="22" fill="#e9f2ff" stroke="#8ab4f8" stroke-width="2"/>
+  <text x="120" y="195" class="h">1. Web 端輸入</text>
+  <text x="120" y="233" class="t">專案 ZIP + Web Skill（Web 規則檔）+ 本次需求</text>
+  <text x="120" y="267" class="small">Web 端只給 Web Skill；不要把地端 Codex Skill 一起丟進去，以免角色規則混淆。</text>
+  <path class="arrow" d="M700 295 L700 345"/>
+  <rect x="85" y="350" width="1230" height="250" rx="22" fill="#eefbf3" stroke="#79c99e" stroke-width="2"/>
+  <text x="120" y="397" class="h">2. Web 高推理階段 — 高成本思考只做一次</text>
+  <text x="120" y="438" class="t">• 理解架構與需求</text>
+  <text x="120" y="472" class="t">• 中大型工作建立 plan.md（開發計畫）</text>
+  <text x="120" y="506" class="t">• 完成主要程式碼修改</text>
+  <text x="120" y="540" class="t">• Static code review（靜態程式碼審查）</text>
+  <text x="790" y="438" class="t">• 產出 minimal patch ZIP（最小變更包）</text>
+  <text x="790" y="472" class="t">• 明確列出需要刪除的檔案</text>
+  <text x="790" y="506" class="t">• 產出完整地端 Codex 交接 Prompt</text>
+  <text x="790" y="540" class="t">• 標記仍需執行驗證的項目</text>
+  <text x="120" y="580" class="note">預設不要做：完整編譯／完整測試循環、地端 SDK 配置、與需求無關的大型重構。</text>
+  <path class="arrow" d="M700 600 L700 650"/>
+  <rect x="85" y="655" width="1230" height="125" rx="22" fill="#fff7e8" stroke="#e5b75b" stroke-width="2"/>
+  <text x="120" y="700" class="h">3. 交接邊界</text>
+  <text x="120" y="739" class="t">本機套用最小 patch → 把 Local Skill + Web 交接 Prompt 給地端 Codex。</text>
+  <text x="120" y="768" class="small">刪檔清單必須寫在交接內容中，因為一般覆蓋式 ZIP 無法可靠表示「刪除舊檔」。</text>
+  <path class="arrow" d="M700 780 L700 830"/>
+  <rect x="85" y="835" width="1230" height="165" rx="22" fill="#f3efff" stroke="#a995e8" stroke-width="2"/>
+  <text x="120" y="880" class="h">4. 地端 Codex 階段 — 執行、驗證、只做小幅修正</text>
+  <text x="120" y="920" class="t">指定刪檔 → build/compile（建置／編譯）→ 相關測試 → 基本執行驗證 → 小修 → 再驗證 → 清理</text>
+  <text x="120" y="955" class="note">不要重新分析需求或重做架構；遇到架構級問題就整理資訊，交回 Web 高推理階段。</text>
+  <text x="700" y="1030" text-anchor="middle" class="small">節省用量的核心：避免地端 Codex 重複做已完成的高成本推理與主要改碼。</text>
+</svg>
