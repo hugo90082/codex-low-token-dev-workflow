@@ -17,7 +17,7 @@ The diagram also highlights two rules that matter for token efficiency: the Web 
 
 ## Important terminology note
 
-This repository uses the phrase **"token-efficient"** because it is easy to understand and clearly communicates the goal. However, a product's actual usage limits, quota accounting, or billing may not be calculated only from raw model tokens. This workflow makes **no guarantee of a fixed percentage of savings**.
+This repository uses the phrase **"low-token"** to communicate the goal of reducing unnecessary local Codex usage. However, a product's actual usage limits, quota accounting, or billing may not be calculated only from raw model tokens. This workflow makes **no guarantee of a fixed percentage of savings**.
 
 Its real goal is to reduce duplicated work such as:
 
